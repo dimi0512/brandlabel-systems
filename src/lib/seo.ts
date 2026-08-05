@@ -1,5 +1,5 @@
 export const SITE_URL = "https://brandlabelagency.com";
-export const SITE_NAME = "BrandLabel Systems";
+export const SITE_NAME = "BrandLabel Agency";
 
 export const siteUrl = new URL(SITE_URL);
 
@@ -8,7 +8,15 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "en";
 
-export const publicRoutes = ["", "/services", "/case-study", "/contact", "/privacy"] as const;
+export const publicRoutes = [
+  "",
+  "/platforms",
+  "/commercial-options",
+  "/diagnostic",
+  "/free-operational-audit",
+  "/contact",
+  "/privacy",
+] as const;
 export type PublicRoute = (typeof publicRoutes)[number];
 
 export function absoluteUrl(path = "") {

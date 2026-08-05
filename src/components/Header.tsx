@@ -16,9 +16,8 @@ import { Container } from "./Container";
 const MotionLink = motion.create(Link);
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/case-study", label: "Case Study" },
+  { href: "/platforms", label: "Platforms" },
+  { href: "/commercial-options", label: "Pricing" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -44,10 +43,10 @@ function LanguageSelector({ compact = false }: { compact?: boolean }) {
             className={`inline-flex min-h-9 min-w-10 items-center justify-center rounded-sm px-2.5 text-center text-sm font-semibold leading-none transition ${
               active
                 ? "bg-[#0B1F3A] text-[#C8A96A]"
-                : "text-[#0B1F3A]/65 hover:bg-[#0B1F3A]/5 hover:text-[#0B1F3A]"
+                : "bl-header-gold-hover text-[#0B1F3A]/65 hover:text-[#0B1F3A]"
             }`}
           >
-            {item.label}
+            <span>{item.label}</span>
           </Link>
         );
       })}
@@ -76,7 +75,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-[80] border-b border-[#0B1F3A]/10 bg-[#fffdf8] md:bg-[#fffdf8]/95 md:backdrop-blur-xl">
-      <Container className="flex h-18 items-center justify-between md:h-22">
+      <Container className="flex h-18 items-center justify-between md:grid md:h-22 md:grid-cols-[auto_minmax(0,1fr)_auto] md:gap-5 lg:gap-7">
         <div className="flex min-w-0 items-center gap-3">
           {/* Mobile hamburger */}
           <button
@@ -111,7 +110,7 @@ export function Header() {
           <Link
             href={localizedPathname("/", activeLanguage)}
             className="flex min-w-0 items-center"
-            aria-label="BrandLabel Systems home"
+            aria-label="BrandLabel Agency home"
           >
             <Image
               src="/brandlabel-agency-logo.png"
@@ -119,28 +118,28 @@ export function Header() {
               width={520}
               height={160}
               priority
-              className="h-10 w-auto max-w-[8.75rem] shrink-0 object-contain sm:h-12 sm:max-w-[11rem] lg:h-14 lg:max-w-[15rem]"
+              className="h-10 w-auto max-w-[8.75rem] shrink-0 object-contain sm:h-12 sm:max-w-[10rem] lg:h-13 lg:max-w-[12rem] xl:h-14 xl:max-w-[14rem]"
             />
           </Link>
         </div>
 
         {/* Desktop nav */}
         <nav
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center justify-center gap-1 md:flex lg:gap-3 xl:gap-5"
           aria-label="Main navigation"
         >
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={localizedPathname(item.href, activeLanguage)}
-              className="text-base text-slate-600 transition hover:text-[#0B1F3A] lg:text-lg"
+              className="bl-header-gold-hover rounded-sm px-2.5 py-2 text-sm text-slate-600 hover:text-[#0B1F3A] lg:px-3 lg:text-base xl:text-lg"
             >
-              {item.label}
+              <span>{item.label}</span>
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center justify-self-end gap-2 lg:gap-3">
           <div className="hidden md:block">
             <LanguageSelector />
           </div>
@@ -150,10 +149,11 @@ export function Header() {
 
           <div className="hidden md:block">
             <ButtonLink
-              href={localizedPathname("/contact", activeLanguage)}
-              variant="gold"
+              href={localizedPathname("/diagnostic", activeLanguage)}
+              variant="dark"
+              className="bl-header-cta bl-header-gold-hover"
             >
-              Request a Free Audit
+              <span>Calculate your cost</span>
             </ButtonLink>
           </div>
         </div>
@@ -185,20 +185,20 @@ export function Header() {
                 onClick={() => setMenuOpen(false)}
                 whileTap={{ opacity: 0.6, backgroundColor: "#f5f1e6" }}
                 transition={{ duration: 0.1 }}
-                className="pointer-events-auto flex min-h-[3.5rem] touch-manipulation items-center border-b border-[#0B1F3A]/[0.08] px-6 text-lg font-medium text-[#0B1F3A] last:border-b-0"
+                className="bl-header-gold-hover pointer-events-auto flex min-h-[3.5rem] touch-manipulation items-center border-b border-[#0B1F3A]/[0.08] px-6 text-lg font-medium text-[#0B1F3A] last:border-b-0"
               >
-                {item.label}
+                <span>{item.label}</span>
               </MotionLink>
             ))}
           </nav>
           <div className="px-6 pb-8 pt-4">
             <ButtonLink
-              href={localizedPathname("/contact", activeLanguage)}
-              variant="gold"
-              className="w-full justify-center"
+              href={localizedPathname("/diagnostic", activeLanguage)}
+              variant="dark"
+              className="bl-header-cta bl-header-gold-hover w-full justify-center"
               onClick={() => setMenuOpen(false)}
             >
-              Request a Free Audit
+              <span>Calculate your cost</span>
             </ButtonLink>
           </div>
         </div>

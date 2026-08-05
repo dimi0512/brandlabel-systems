@@ -15,6 +15,7 @@ import {
   localizedPath,
   type Locale,
 } from "@/lib/seo";
+import { currentTranslations } from "@/lib/currentTranslations";
 
 export type Language = Locale;
 
@@ -1131,12 +1132,13 @@ const translations: Record<Exclude<Language, "en">, Record<string, string>> = {
     "Message": "Message",
     "Your name": "Votre nom",
     "Company name": "Nom de l’entreprise",
-    "What tools, workflows, or client processes need to be cleaned up?": "Quels outils, flux de travail ou processus client doivent être clarifiés ?",
+    "What tools, workflows or client processes could be improved, simplified or connected?": "Quels outils, flux de travail ou processus client pourraient être améliorés, simplifiés ou connectés ?",
     "We received your request.": "Nous avons reçu votre demande.",
     "We'll be in touch within 24 hours to schedule your free audit.": "Nous vous contacterons sous 24 heures pour planifier votre audit gratuit.",
     "We&apos;ll be in touch within 24 hours to schedule your free audit.": "Nous vous contacterons sous 24 heures pour planifier votre audit gratuit.",
     "We will get back to you within 24 hours.": "Nous vous répondrons sous 24 heures.",
     ...extraTranslations.fr,
+    ...currentTranslations.fr,
   },
   nl: {
     "Home": "Home",
@@ -1395,12 +1397,13 @@ const translations: Record<Exclude<Language, "en">, Record<string, string>> = {
     "Message": "Bericht",
     "Your name": "Je naam",
     "Company name": "Bedrijfsnaam",
-    "What tools, workflows, or client processes need to be cleaned up?": "Welke tools, workflows of klantprocessen moeten worden opgeschoond?",
+    "What tools, workflows or client processes could be improved, simplified or connected?": "Welke tools, workflows of klantprocessen kunnen worden verbeterd, vereenvoudigd of verbonden?",
     "We received your request.": "We hebben je aanvraag ontvangen.",
     "We'll be in touch within 24 hours to schedule your free audit.": "We nemen binnen 24 uur contact op om je gratis audit te plannen.",
     "We&apos;ll be in touch within 24 hours to schedule your free audit.": "We nemen binnen 24 uur contact op om je gratis audit te plannen.",
     "We will get back to you within 24 hours.": "We nemen binnen 24 uur contact met je op.",
     ...extraTranslations.nl,
+    ...currentTranslations.nl,
   },
 };
 
@@ -1427,16 +1430,41 @@ function normalize(value: string) {
   return value.replace(/\s+/g, " ").trim();
 }
 
+function applyAgencyName(value: string) {
+  return value.replaceAll("BrandLabel Systems", "BrandLabel Agency");
+}
+
 function translateValue(language: Language, value: string) {
-  if (language === "en") return value;
+  if (language === "en") return applyAgencyName(value);
   const directTranslation = translations[language][value];
-  if (directTranslation) return directTranslation;
+  if (directTranslation) return applyAgencyName(directTranslation);
 
   const stepMatch = value.match(/^Step (\d+) \/ (\d+)$/);
   if (stepMatch) {
     return language === "fr"
       ? `Étape ${stepMatch[1]} / ${stepMatch[2]}`
       : `Stap ${stepMatch[1]} / ${stepMatch[2]}`;
+  }
+
+  const questionMatch = value.match(/^Question (\d+) of (\d+)$/);
+  if (questionMatch) {
+    return language === "fr"
+      ? `Question ${questionMatch[1]} sur ${questionMatch[2]}`
+      : `Vraag ${questionMatch[1]} van ${questionMatch[2]}`;
+  }
+
+  const calculatedProblemsMatch = value.match(/^(\d+) recurring problems calculated$/);
+  if (calculatedProblemsMatch) {
+    return language === "fr"
+      ? `${calculatedProblemsMatch[1]} problèmes récurrents calculés`
+      : `${calculatedProblemsMatch[1]} terugkerende problemen berekend`;
+  }
+
+  const copyrightMatch = value.match(/^© (\d{4}) BrandLabel Agency\. All rights reserved\.$/);
+  if (copyrightMatch) {
+    return language === "fr"
+      ? `© ${copyrightMatch[1]} BrandLabel Agency. Tous droits réservés.`
+      : `© ${copyrightMatch[1]} BrandLabel Agency. Alle rechten voorbehouden.`;
   }
 
   const stepLabelMatch = value.match(/^Go to step (\d+): (.+)$/);
@@ -1448,7 +1476,7 @@ function translateValue(language: Language, value: string) {
       : `Ga naar stap ${stepLabelMatch[1]}: ${translatedTitle}`;
   }
 
-  return value;
+  return applyAgencyName(value);
 }
 
 function translateDom(language: Language) {
@@ -1505,13 +1533,8 @@ function translateDom(language: Language) {
   });
 }
 
-function getInitialBrowserLanguage(): Language {
-  if (typeof window === "undefined") return defaultLocale;
-  return getLanguageFromPathname(window.location.pathname) ?? defaultLocale;
-}
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(getInitialBrowserLanguage);
+  const [language, setLanguageState] = useState<Language>(defaultLocale);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {

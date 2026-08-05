@@ -288,19 +288,20 @@ function ServicesHero() {
             variants={isDesktopHero ? fadeUp : undefined}
             className="font-display max-w-[20ch] text-balance text-5xl font-semibold leading-[0.98] text-[#0B1F3A] sm:text-6xl lg:text-[4.75rem]"
           >
-            Custom systems, web apps, and websites built around your business.
+            Operational platforms built around the way your business works.
           </motion.h1>
           <motion.p
             variants={isDesktopHero ? fadeUp : undefined}
             className="mt-7 max-w-xl text-lg leading-8 text-[#0B1F3A]/72"
           >
-            From internal tools to customer-facing websites, BrandLabel Systems designs
-            digital solutions that replace scattered processes with clear, structured
-            workflows.
+            From internal tools to customer-facing interfaces, BrandLabel Agency designs
+            connected working environments that replace scattered processes with clear,
+            structured workflows. Customer portals and public interfaces can be included
+            where they support the wider operation.
           </motion.p>
           <motion.div variants={isDesktopHero ? fadeUp : undefined} className="mt-10 flex flex-col gap-3 sm:flex-row">
             <PrimaryCTA href="/contact" variant="dark">
-              Request a Free Audit
+              Discuss your operation
             </PrimaryCTA>
           </motion.div>
           <motion.p

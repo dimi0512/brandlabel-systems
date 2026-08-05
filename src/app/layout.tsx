@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@/components/Analytics";
 import { absoluteUrl, SITE_NAME, siteUrl } from "@/lib/seo";
 import "./globals.css";
@@ -9,10 +9,20 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const display = Cormorant_Garamond({
-  subsets: ["latin"],
+const display = localFont({
+  src: "../../public/fonts/dm-serif-display-latin.woff2",
   variable: "--font-display",
-  weight: ["500", "600", "700"],
+  weight: "400",
+  style: "normal",
+  display: "swap",
+});
+
+const sans = localFont({
+  src: "../../public/fonts/inter-latin.woff2",
+  variable: "--font-sans",
+  weight: "100 900",
+  style: "normal",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -22,11 +32,11 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   metadataBase: siteUrl,
   title: {
-    default: `${SITE_NAME} | Custom Systems Agency`,
+    default: `${SITE_NAME} | Operational Platforms Built Around Your Business`,
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Custom internal systems, workflow automation, client portals, web apps, and websites for service businesses and field teams that need cleaner operations.",
+    "BrandLabel designs operational platforms around the way your company works, connecting clients, planning, teams, documents, stock, sales and repetitive processes.",
   keywords: [
     "custom systems agency",
     "custom internal systems",
@@ -35,8 +45,8 @@ export const metadata: Metadata = {
     "client portals",
     "operations dashboard",
     "business process automation",
-    "service business software",
-    "custom websites",
+    "business operations software",
+    "operational platforms for SMEs",
     "field service workflow software",
     "custom systems Belgium",
     "workflow automation Belgium",
@@ -68,23 +78,23 @@ export const metadata: Metadata = {
     url: absoluteUrl("/"),
     siteName: SITE_NAME,
     locale: "en_GB",
-    title: `${SITE_NAME} | Custom Systems Agency`,
+    title: `${SITE_NAME} | Tailored Operational Platforms for SMEs`,
     description:
-      "Custom internal systems, workflow automation, client portals, web apps, and websites for service businesses and field teams that need cleaner operations.",
+      "Tailored operational platforms, workflow automation and customer interfaces for SMEs across industries, worldwide.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "BrandLabel Systems custom operations dashboard preview",
+        alt: "BrandLabel Agency custom operations dashboard preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Custom Systems Agency`,
+    title: `${SITE_NAME} | Tailored Operational Platforms for SMEs`,
     description:
-      "Custom internal systems, workflow automation, client portals, web apps, and websites for service businesses and field teams that need cleaner operations.",
+      "Tailored operational platforms, workflow automation and customer interfaces for SMEs across industries, worldwide.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -189,7 +199,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${display.variable} antialiased`}>
+      <body className={`${display.variable} ${sans.variable} antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -10,7 +10,7 @@ export function CookieSettingsButton() {
         window.localStorage.removeItem(CONSENT_KEY);
         window.location.reload();
       }}
-      className="touch-manipulation text-left text-xl text-neutral-300 transition hover:text-white active:opacity-70 lg:text-2xl"
+      className="touch-manipulation text-left text-sm leading-6 text-neutral-400 transition hover:text-white active:opacity-70"
     >
       Cookie settings
     </button>

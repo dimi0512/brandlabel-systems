@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 type ContactPayload = {
+  requestType?: string;
   name?: string;
   company?: string;
   email?: string;
@@ -9,10 +10,11 @@ type ContactPayload = {
 };
 
 const MAX_FIELD_LENGTH = 2000;
+const MAX_MESSAGE_LENGTH = 8000;
 
-function clean(value: unknown) {
+function clean(value: unknown, maximumLength = MAX_FIELD_LENGTH) {
   if (typeof value !== "string") return "";
-  return value.trim().slice(0, MAX_FIELD_LENGTH);
+  return value.trim().slice(0, maximumLength);
 }
 
 function escapeHtml(value: string) {
@@ -43,13 +45,14 @@ export async function POST(request: NextRequest) {
   }
 
   const name = clean(payload.name);
+  const requestType = clean(payload.requestType);
   const company = clean(payload.company);
   const email = clean(payload.email);
-  const message = clean(payload.message);
+  const message = clean(payload.message, MAX_MESSAGE_LENGTH);
 
-  if (!name || !email) {
+  if (!requestType || !name || !email) {
     return NextResponse.json(
-      { error: "Name and email are required." },
+      { error: "Request type, name and email are required." },
       { status: 400 },
     );
   }
@@ -72,10 +75,11 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const subject = `New BrandLabel audit request from ${name}`;
+  const subject = `${requestType} request from ${name}`;
   const text = [
-    "New BrandLabel Systems contact request",
+    "New BrandLabel Agency contact request",
     "",
+    `Request: ${requestType}`,
     `Name: ${name}`,
     `Company: ${company || "Not provided"}`,
     `Email: ${email}`,
@@ -86,7 +90,8 @@ export async function POST(request: NextRequest) {
 
   const html = `
     <div style="font-family: Arial, sans-serif; color: #0B1F3A; line-height: 1.6;">
-      <h2>New BrandLabel Systems contact request</h2>
+      <h2>New BrandLabel Agency contact request</h2>
+      <p><strong>Request:</strong> ${escapeHtml(requestType)}</p>
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
       <p><strong>Company:</strong> ${escapeHtml(company || "Not provided")}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>

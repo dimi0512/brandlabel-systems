@@ -18,11 +18,11 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-700 lg:text-xl lg:leading-9">
-            This policy explains how BrandLabel Systems handles personal information,
+            This policy explains how BrandLabel Agency handles personal information,
             cookies, analytics, service providers, retention, security, and privacy rights.
           </p>
           <p className="mt-5 text-sm text-slate-500 lg:text-base">
-            Last updated: May 11, 2026
+            Last updated: July 29, 2026
           </p>
         </Container>
       </section>
