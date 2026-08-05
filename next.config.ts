@@ -9,21 +9,10 @@ const nextConfig: NextConfig = {
         has: [
           {
             type: "host",
-            value: "www.brandlabelagency.com",
-          },
-        ],
-        destination: "https://brandlabelagency.com/:path*",
-        permanent: true,
-      },
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "host",
             value: "centre-plongee-rague.com",
           },
         ],
-        destination: "https://brandlabelagency.com/:path*",
+        destination: "https://www.brandlabelagency.com/:path*",
         permanent: true,
       },
       {
@@ -34,7 +23,7 @@ const nextConfig: NextConfig = {
             value: "www.centre-plongee-rague.com",
           },
         ],
-        destination: "https://brandlabelagency.com/:path*",
+        destination: "https://www.brandlabelagency.com/:path*",
         permanent: true,
       },
     ];

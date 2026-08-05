@@ -1,4 +1,4 @@
-export const SITE_URL = "https://brandlabelagency.com";
+export const SITE_URL = "https://www.brandlabelagency.com";
 export const SITE_NAME = "BrandLabel Agency";
 
 export const siteUrl = new URL(SITE_URL);
