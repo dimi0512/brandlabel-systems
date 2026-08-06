@@ -1555,6 +1555,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    document.documentElement.lang = language;
     let frame = window.requestAnimationFrame(() => translateDom(language));
     const observer = new MutationObserver(() => {
       window.cancelAnimationFrame(frame);

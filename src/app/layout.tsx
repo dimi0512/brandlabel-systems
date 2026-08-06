@@ -32,13 +32,13 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   metadataBase: siteUrl,
   title: {
-    default: `${SITE_NAME} | Operational Platforms Built Around Your Business`,
+    default: `${SITE_NAME} | Operational Platforms for SMEs`,
     template: `%s | ${SITE_NAME}`,
   },
   description:
     "BrandLabel designs operational platforms around the way your company works, connecting clients, planning, teams, documents, stock, sales and repetitive processes.",
   keywords: [
-    "custom systems agency",
+    "operational platform agency",
     "custom internal systems",
     "custom web apps",
     "workflow automation",
@@ -118,39 +118,29 @@ const jsonLd = [
     name: SITE_NAME,
     alternateName: "BL",
     url: siteUrl.toString(),
+    logo: new URL("/icon-512.png", siteUrl).toString(),
     image: new URL("/og-image.png", siteUrl).toString(),
     description:
-      "Custom internal systems, workflow automation, client portals, web apps, and websites for service businesses, event agencies, and field service teams.",
-    slogan: "Custom systems for clearer operations.",
+      "Tailored operational platforms, workflow automation and connected customer interfaces for SMEs across industries, worldwide.",
+    slogan: "Operational platforms built around your business.",
+    email: "contact@brandlabelagency.com",
+    vatID: "BE1040366570",
     areaServed: ["Belgium", "Europe", "Worldwide"],
-    sameAs: [siteUrl.toString()],
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": `${siteUrl.toString()}#professional-service`,
-    name: SITE_NAME,
-    url: siteUrl.toString(),
-    image: new URL("/og-image.png", siteUrl).toString(),
-    description:
-      "Custom internal systems, workflow automation, client portals, web apps, and websites for service businesses, event agencies, and field service teams.",
-    areaServed: ["Belgium", "Europe", "Worldwide"],
-    serviceType: [
-      "Custom internal systems",
-      "Custom web applications",
-      "Workflow automation",
-      "Client portals",
-      "Business websites",
-    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      email: "contact@brandlabelagency.com",
+      availableLanguage: ["English", "French", "Dutch"],
+    },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Custom systems services",
+      name: "Operational platform services",
       itemListElement: [
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Custom Internal Systems",
+            name: "Tailored Operational Platforms",
             provider: {
               "@id": `${siteUrl.toString()}#business`,
             },
@@ -160,7 +150,7 @@ const jsonLd = [
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Custom Web Apps",
+            name: "Workflow Automation and Integrations",
             provider: {
               "@id": `${siteUrl.toString()}#business`,
             },
@@ -170,7 +160,17 @@ const jsonLd = [
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Workflow Automation",
+            name: "Customer Portals and Public Interfaces",
+            provider: {
+              "@id": `${siteUrl.toString()}#business`,
+            },
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Platform Maintenance and Continuous Improvement",
             provider: {
               "@id": `${siteUrl.toString()}#business`,
             },
@@ -188,7 +188,7 @@ const jsonLd = [
     publisher: {
       "@id": `${siteUrl.toString()}#business`,
     },
-    inLanguage: "en",
+    inLanguage: ["en", "fr", "nl"],
   },
 ];
 
@@ -198,7 +198,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "(()=>{const l=location.pathname.split('/').filter(Boolean)[0];document.documentElement.lang=l==='fr'||l==='nl'?l:'en'})()",
+          }}
+        />
+      </head>
       <body className={`${display.variable} ${sans.variable} antialiased`}>
         <script
           type="application/ld+json"
