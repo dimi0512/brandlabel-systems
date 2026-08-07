@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
             value: "centre-plongee-rague.com",
           },
         ],
-        destination: "https://www.brandlabelagency.com/:path*",
+        destination: "https://brandlabelagency.com/:path*",
         permanent: true,
       },
       {
@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
             value: "www.centre-plongee-rague.com",
           },
         ],
-        destination: "https://www.brandlabelagency.com/:path*",
+        destination: "https://brandlabelagency.com/:path*",
         permanent: true,
       },
     ];
