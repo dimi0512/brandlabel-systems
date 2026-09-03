@@ -13,7 +13,7 @@ import { Container } from "@/components/Container";
 
 const chapters = [
   {
-    title: "One system can hold the whole operation together.",
+    title: "One tailored operational platform can hold the whole operation together.",
     text: "Projects, clients, quotes, documents, time and approvals become one working environment—reconstructed here from a real platform already built by BrandLabel.",
     screen: "Project workspace",
     accent: "#ff7a00",

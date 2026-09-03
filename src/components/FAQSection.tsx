@@ -5,7 +5,7 @@ const questions = [
   {
     question: "What does BrandLabel Agency build?",
     answer:
-      "We design tailored operational platforms that bring the workflows, information, people, documents, approvals and customer interactions involved in running a business into a clearer working environment. A website, customer portal or public interface can be included when it forms part of the wider platform.",
+      "BrandLabel Agency designs custom business software, focused operational systems and complete operational platforms. Depending on the problem, this can include workflows, dashboards, client portals, planning, approvals, documents, integrations, automation and other internal or customer-facing functionality. The scope is defined around how the business actually operates, not around a generic software package.",
   },
   {
     question: "What does the procedure look like?",
@@ -15,7 +15,7 @@ const questions = [
   {
     question: "How long does a project take?",
     answer:
-      "Timing depends on workflow complexity, modules, integrations, migration, client availability and approval speed. A focused platform may take several weeks, while a broader operational environment may require several months. A realistic milestone plan is agreed before development begins.",
+      "Timing depends on workflow complexity, modules, integrations, migration, client availability and approval speed. A focused operational system may take several weeks, while a broader operational environment may require several months. A realistic milestone plan is agreed before development begins.",
   },
   {
     question: "Can information from our current tools be migrated?",

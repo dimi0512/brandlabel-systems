@@ -44,9 +44,10 @@ export default function CommercialOptionsPage() {
         <Container>
           <h1>Choose how you want to invest in your platform.</h1>
           <p>
-            The platform is scoped around your operation first. We then structure the
-            commercial relationship around the level of ownership, access and continued
-            involvement that makes sense for the business.
+            Every BrandLabel system is scoped around the problem it needs to solve, so
+            there is no artificial one-size-fits-all price. Once the required workflows,
+            users, integrations and level of ownership are clear, we define the investment
+            and the commercial model that fits the business.
           </p>
           <ButtonLink href="/contact" variant="dark">
             Discuss the right model
@@ -59,8 +60,10 @@ export default function CommercialOptionsPage() {
           <div className="bl-commercial-models-intro">
             <h2>Clear differences without artificial packages.</h2>
             <p>
-              Pricing depends on scope, workflows, users, integrations, migration,
-              infrastructure and the selected ownership model.
+              The investment depends on the scope and complexity of the system, including
+              workflows, users, integrations, data migration and infrastructure. How you
+              choose to access or own the system then determines how that investment is
+              structured.
             </p>
           </div>
           <div className="bl-commercial-model-grid">

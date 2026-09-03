@@ -279,7 +279,10 @@ export function DiagnosticExperience() {
                     Which recurring problem should we calculate?
                   </h1>
                   <p className="mt-4 max-w-2xl text-base leading-7 text-[#5f6878] sm:text-lg">
-                    Choose one familiar task. The result will measure only this problem—not make assumptions about your entire business.
+                    Estimate what repetitive administration and inefficient processes are costing your business in employee time.
+                  </p>
+                  <p className="mt-3 text-sm font-medium text-[#667085]">
+                    Immediate estimate · No email required · Usually completed in about a minute
                   </p>
                   <div className="mt-8 grid gap-3 md:grid-cols-2">
                     {problems.map((problem) => {
@@ -534,6 +537,12 @@ export function DiagnosticExperience() {
             </p>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-[#667085]">
               Annual figures use 46 working weeks to allow for holidays and other non-working periods.
+            </p>
+            <p className="mt-6 max-w-3xl text-base leading-7 text-[#344054]">
+              A high recurring cost does not always require a complete platform. The right solution may be workflow automation, a focused operational system or a broader business platform, depending on where the inefficiency comes from.
+            </p>
+            <p className="mt-2 max-w-3xl text-base leading-7 text-[#344054]">
+              BrandLabel starts with the workflow behind the cost before recommending what should be built or changed.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

@@ -186,14 +186,11 @@ export function FreeAuditExperience() {
         <div aria-hidden className="absolute -right-48 top-20 size-[34rem] rounded-full border border-[#9b742f]/25" />
         <Container className="relative z-10 grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
           <h1 className="max-w-3xl font-display text-5xl leading-[.98] text-[#0b1f3a] sm:text-6xl lg:text-7xl">
-            Start with one operation that should work better.
+            Find where one of your business processes could work better.
           </h1>
           <div className="max-w-2xl lg:justify-self-end">
             <p className="text-lg leading-8 text-[#4f5d70] sm:text-xl sm:leading-9">
-              Share one recurring workflow. We will review the information and email you within two business days to arrange a conversation.
-            </p>
-            <p className="mt-4 text-sm font-semibold uppercase tracking-[.14em] text-[#8d692b]">
-              No commitment · Manually reviewed by BrandLabel Agency
+              Send us one recurring workflow that takes too much time, creates unnecessary administration or simply feels harder than it should. We&apos;ll review how it works and identify where it could be simplified, improved or automated.
             </p>
           </div>
         </Container>
@@ -202,6 +199,15 @@ export function FreeAuditExperience() {
       <section className="bl-audit-parallax py-14 sm:py-20">
         <div className="bl-audit-parallax-shade" aria-hidden="true" />
         <Container className="relative z-10">
+          <div className="mx-auto mb-8 max-w-5xl rounded-sm border border-white/75 bg-white/90 p-6 shadow-[0_22px_55px_rgba(11,31,58,.12)] backdrop-blur-md sm:p-8">
+            <h2 className="font-display text-3xl leading-tight text-[#0b1f3a] sm:text-4xl">Tell us about the workflow.</h2>
+            <p className="mt-3 max-w-3xl text-base leading-7 text-[#5f6878]">
+              You don&apos;t need to know what technology you need. Just explain what happens today and where the difficulty is.
+            </p>
+            <p className="mt-4 text-sm font-semibold uppercase tracking-[.14em] text-[#8d692b]">
+              Free human review. No obligation. No automated recommendation.
+            </p>
+          </div>
           <form onSubmit={handleSubmit} className="mx-auto max-w-5xl">
             {hasDiagnostic ? (
               <section className="rounded-sm border border-[#c8a96a]/50 bg-[linear-gradient(135deg,#fffdf9_40%,#efe0bd)] p-6 shadow-[0_24px_60px_rgba(11,31,58,.08)] sm:p-8">
@@ -274,6 +280,15 @@ export function FreeAuditExperience() {
               </p>
             </section>
           </form>
+          <div className="mx-auto mt-8 max-w-5xl rounded-sm border border-white/75 bg-white/90 p-6 shadow-[0_22px_55px_rgba(11,31,58,.12)] backdrop-blur-md sm:p-8">
+            <h2 className="font-display text-3xl leading-tight text-[#0b1f3a] sm:text-4xl">What happens next?</h2>
+            <p className="mt-3 max-w-4xl text-base leading-7 text-[#5f6878]">
+              We review the workflow manually and look for unnecessary steps, repetitive work, disconnected information and opportunities for automation. If we see a meaningful improvement, we&apos;ll explain what we would change and why.
+            </p>
+            <p className="mt-3 max-w-4xl text-base leading-7 text-[#5f6878]">
+              The answer may be a small process change, a focused operational system or a broader platform. We recommend the scope based on the problem, not on what we want to sell.
+            </p>
+          </div>
         </Container>
       </section>
     </>

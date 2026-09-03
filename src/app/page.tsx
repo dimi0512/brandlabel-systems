@@ -80,8 +80,9 @@ export default function Home() {
           <div className="bl-convenience-intro">
             <h2>Your business should feel easier to run.</h2>
             <p>
-              Not another generic tool. BrandLabel Agency creates a working environment
-              that removes everyday friction from the way your business operates.
+              Not another generic tool. BrandLabel Agency designs tailored business software
+              and operational platforms around the way your company actually works—connecting
+              information, workflows and automation where they belong.
             </p>
           </div>
           <div className="bl-convenience-grid">
@@ -105,7 +106,7 @@ export default function Home() {
         <div className="bl-home-office-shade" />
         <Container className="bl-home-office-content">
           <div>
-            <h2>One clear environment for the work behind your business.</h2>
+            <h2>Custom business software built around your operation.</h2>
           </div>
           <div>
             <p>
@@ -125,6 +126,10 @@ export default function Home() {
             <div>
               <h2>Different businesses. The same need for clarity.</h2>
             </div>
+            <p>
+              From focused operational systems to complete internal business platforms, the
+              scope follows the problem—not a predefined software package.
+            </p>
           </div>
           <div className="bl-home-example-cards">
             {platformPreviews.map((platform) => (

@@ -48,8 +48,8 @@ export function TextFirstHero() {
             Do you know what inefficient operations cost you every day?
           </h1>
           <p className="bl-home-hero-lead">
-            Let&apos;s do the math. Then let&apos;s discuss the right solution for making
-            your business easier to run.
+            Calculate the cost of inefficient processes, then see how tailored business
+            software and workflow automation can make your operation easier to run.
           </p>
           <div className="bl-home-hero-actions">
             <ButtonLink href="/diagnostic" variant="dark">

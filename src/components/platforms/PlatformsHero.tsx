@@ -39,10 +39,10 @@ export function PlatformsHero() {
     <section ref={heroRef} className="bl-platform-hero">
       <Container className="bl-platform-hero-inner">
         <div className="bl-platform-hero-copy">
-          <h1>We design the operation before we design the software.</h1>
+          <h1>Custom business software starts with how your operation actually works.</h1>
           <p>
-            Every BrandLabel platform begins with the way the business actually works.
-            The technology follows the workflow—not the other way around.
+            We design the operation before we design the software. The technology follows
+            the workflow—not the other way around.
           </p>
           <div className="bl-platform-hero-actions">
             <ButtonLink href="/contact" variant="dark">

@@ -63,8 +63,7 @@ export default function ContactPage() {
               Tell us what needs to work better.
             </h1>
             <p className="bl-contact-hero-intro">
-              Request a detailed operational report, book a consultation, or discuss
-              which commercial model is right for the platform you need.
+              Request an operational review, book a consultation, or tell us what is not working well in your business. We’ll help determine whether the right next step is a process improvement, a focused operational system or a broader platform.
             </p>
             <div className="premium-card bl-contact-next">
               <p className="bl-contact-next-title">What happens next:</p>

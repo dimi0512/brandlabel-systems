@@ -672,6 +672,11 @@
   color: #132033;
 }
 
+.bl-platform-focused {
+  padding: clamp(3.5rem, 6vw, 5rem) 0;
+  background: #f9f7f2;
+}
+
 .bl-commercial-principles {
   position: relative;
   overflow: hidden;
@@ -954,6 +959,26 @@
   height: 3px;
   background: linear-gradient(90deg, rgba(200,169,106,.85), rgba(177,199,209,.65), transparent);
   content: "";
+}
+
+.bl-commercial-principles article::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    rgba(255,255,255,0) 8%,
+    rgba(249,240,220,.46) 56%,
+    rgba(200,169,106,.38) 100%
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+
+.bl-commercial-principles article:hover::after {
+  opacity: 1;
 }
 
 .bl-commercial-principles h3 {
@@ -3901,7 +3926,7 @@ select {
 .bl-convenience-intro {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(18rem, .5fr);
-  align-items: end;
+  align-items: start;
   gap: clamp(2rem, 7vw, 8rem);
 }
 
@@ -5947,7 +5972,6 @@ select {
   .bl-home-example-cards article,
   .bl-platform-process-grid article,
   .bl-commercial-model-grid article,
-  .bl-commercial-principles article,
   .bl-contact-faq-list details,
   .premium-card,
   .bl-gold-shadow-card
@@ -6001,7 +6025,6 @@ select {
   .bl-home-example-cards article,
   .bl-platform-process-grid article,
   .bl-commercial-model-grid article,
-  .bl-commercial-principles article,
   .bl-contact-faq-list details,
   .premium-card,
   .bl-gold-shadow-card

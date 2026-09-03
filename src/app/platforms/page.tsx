@@ -60,7 +60,7 @@ export default function PlatformsPage() {
       <section className="bl-platform-migration">
         <Container className="bl-platform-migration-layout">
           <div>
-            <h2>Your useful information does not need to be left behind.</h2>
+            <h2>Your existing software and data don&apos;t have to be left behind.</h2>
           </div>
           <div>
             <p>
@@ -71,6 +71,22 @@ export default function PlatformsPage() {
             <p>
               We assess feasibility, data quality, responsibilities, third-party costs and
               validation requirements before this work is included in the scope.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bl-platform-migration bl-platform-focused">
+        <Container className="bl-platform-migration-layout">
+          <div>
+            <h2>A complete platform isn&apos;t always necessary.</h2>
+          </div>
+          <div>
+            <p>
+              Sometimes the right solution is a focused operational system: a client
+              portal, planning workflow, approval process, internal dashboard or another
+              specific system that removes one important bottleneck. We define the scope
+              around the problem, not around a predefined software package.
             </p>
           </div>
         </Container>
