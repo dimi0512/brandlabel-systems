@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { headers } from "next/headers";
 import { Analytics } from "@/components/Analytics";
 import { absoluteUrl, SITE_NAME, siteUrl } from "@/lib/seo";
 import "./globals.css";
@@ -192,20 +193,17 @@ const jsonLd = [
   },
 ];
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const routeLocale = requestHeaders.get("x-brandlabel-locale");
+  const language = routeLocale === "fr" || routeLocale === "nl" ? routeLocale : "en";
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: "(()=>{const l=location.pathname.split('/').filter(Boolean)[0];document.documentElement.lang=l==='fr'||l==='nl'?l:'en'})()",
-          }}
-        />
-      </head>
+    <html lang={language}>
       <body className={`${display.variable} ${sans.variable} antialiased`}>
         <script
           type="application/ld+json"

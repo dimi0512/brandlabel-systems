@@ -12,6 +12,7 @@ import { useRef } from "react";
 import { Container } from "@/components/Container";
 import { LocalizedLink } from "@/components/LocalizedLink";
 import { useIsDesktop } from "@/hooks/useIsDesktop";
+import { LocalizedContent } from "@/lib/i18n";
 
 const projects = [
   {
@@ -110,7 +111,7 @@ export function CaseStudiesShowcase() {
   });
   const backdropY = useTransform(smoothProgress, [0, 1], [-18, 18]);
 
-  return (
+  return <LocalizedContent>{(
     <section
       ref={parallaxRef}
       className={`bl-case-parallax${parallaxEnabled ? " is-active" : ""}`}
@@ -142,5 +143,5 @@ export function CaseStudiesShowcase() {
         ))}
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

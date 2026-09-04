@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { LocalizedLink } from "@/components/LocalizedLink";
-import { useLanguage, type Language } from "@/lib/i18n";
+import { LocalizedContent, useLanguage, type Language } from "@/lib/i18n";
 import {
   DIAGNOSTIC_AUDIT_STORAGE_KEY,
   type DiagnosticAuditContext,
@@ -219,7 +219,7 @@ export function DiagnosticExperience() {
     setStep(totalQuestions);
   }
 
-  return (
+  return <LocalizedContent>{(
     <main className="min-h-screen bg-[#f4f0e8] text-[#0b1f3a]">
       <header className="grid min-h-20 grid-cols-[1fr_auto] items-center gap-4 border-b border-[#0b1f3a]/12 bg-[#fffdf8]/95 px-5 py-3 backdrop-blur sm:grid-cols-[1fr_auto_1fr] sm:px-10">
         <LocalizedLink href="/" className="flex w-fit items-center" aria-label="BrandLabel Agency home">
@@ -583,5 +583,5 @@ export function DiagnosticExperience() {
         </div>
       </section>
     </main>
-  );
+  )}</LocalizedContent>;
 }

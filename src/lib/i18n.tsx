@@ -1,25 +1,24 @@
 "use client";
 
 import {
+  Children,
+  cloneElement,
   createContext,
+  isValidElement,
   useContext,
-  useEffect,
   useMemo,
-  useState,
+  type ReactElement,
   type ReactNode,
 } from "react";
 import {
   defaultLocale,
   isLocale,
-  locales,
   localizedPath,
   type Locale,
 } from "@/lib/seo";
 import { currentTranslations } from "@/lib/currentTranslations";
 
 export type Language = Locale;
-
-const STORAGE_KEY = "brandlabel-language";
 
 const languages: { code: Language; label: string }[] = [
   { code: "en", label: "EN" },
@@ -1407,10 +1406,6 @@ const translations: Record<Exclude<Language, "en">, Record<string, string>> = {
   },
 };
 
-const originalText = new WeakMap<Text, string>();
-const translatedValues = new Set(
-  Object.values(translations).flatMap((dictionary) => Object.values(dictionary)),
-);
 const reverseTranslations = new Map<string, string>(
   Object.values(translations).flatMap((dictionary) =>
     Object.entries(dictionary).map(([source, translated]) => [translated, source]),
@@ -1419,7 +1414,6 @@ const reverseTranslations = new Map<string, string>(
 
 type LanguageContextValue = {
   language: Language;
-  setLanguage: (language: Language) => void;
   languages: typeof languages;
   translate: (value: string) => string;
 };
@@ -1479,110 +1473,48 @@ function translateValue(language: Language, value: string) {
   return applyAgencyName(value);
 }
 
-function translateDom(language: Language) {
-  document.documentElement.lang = language;
-
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-    acceptNode(node) {
-      const parent = node.parentElement;
-      if (!parent) return NodeFilter.FILTER_REJECT;
-      if (["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA"].includes(parent.tagName)) {
-        return NodeFilter.FILTER_REJECT;
-      }
-      return normalize(node.textContent ?? "")
-        ? NodeFilter.FILTER_ACCEPT
-        : NodeFilter.FILTER_REJECT;
-    },
-  });
-
-  const textNodes: Text[] = [];
-  let current = walker.nextNode();
-  while (current) {
-    textNodes.push(current as Text);
-    current = walker.nextNode();
-  }
-
-  textNodes.forEach((node) => {
-    const currentText = normalize(node.textContent ?? "");
-    if (!currentText) return;
-    const sourceText = reverseTranslations.get(currentText) ?? currentText;
-    if (!originalText.has(node) || translatedValues.has(originalText.get(node) ?? "")) {
-      originalText.set(node, sourceText);
-    }
-    const source = originalText.get(node) ?? sourceText;
-    const translated = translateValue(language, source);
-    if (node.textContent !== translated) node.textContent = translated;
-  });
-
-  document.querySelectorAll<HTMLElement>("[placeholder], [aria-label], [title]").forEach((element) => {
-    ["placeholder", "aria-label", "title"].forEach((attribute) => {
-      const value = element.getAttribute(attribute);
-      if (!value) return;
-      const key = `i18nOriginal${attribute.replace(/[^a-z]/gi, "")}`;
-      const dataset = element.dataset as Record<string, string | undefined>;
-      const sourceValue = reverseTranslations.get(value) ?? value;
-      if (!dataset[key] || translatedValues.has(dataset[key] ?? "")) {
-        dataset[key] = sourceValue;
-      }
-      const source = dataset[key] ?? sourceValue;
-      const translated = translateValue(language, source);
-      if (element.getAttribute(attribute) !== translated) {
-        element.setAttribute(attribute, translated);
-      }
-    });
-  });
+function translateText(language: Language, value: string) {
+  const normalized = normalize(value);
+  if (!normalized) return value;
+  const source = reverseTranslations.get(normalized) ?? normalized;
+  return translateValue(language, source);
 }
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(defaultLocale);
+function translateNode(language: Language, node: ReactNode): ReactNode {
+  if (typeof node === "string") return translateText(language, node);
+  if (Array.isArray(node)) return node.map((child) => translateNode(language, child));
+  if (!isValidElement(node)) return node;
 
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      const pathLanguage = getLanguageFromPathname(window.location.pathname);
-      if (pathLanguage) {
-        window.localStorage.setItem(STORAGE_KEY, pathLanguage);
-        setLanguageState(pathLanguage);
-        return;
-      }
+  const element = node as ReactElement<Record<string, unknown>>;
+  const props = element.props;
+  const nextProps: Record<string, unknown> = {};
 
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (locales.includes(stored as Language)) {
-        setLanguageState(stored as Language);
-      }
-    });
+  for (const attribute of ["aria-label", "placeholder", "title", "alt"] as const) {
+    if (typeof props[attribute] === "string") {
+      nextProps[attribute] = translateText(language, props[attribute]);
+    }
+  }
 
-    return () => window.cancelAnimationFrame(frame);
-  }, []);
+  if ("children" in props) {
+    nextProps.children = Children.map(props.children as ReactNode, (child) =>
+      translateNode(language, child),
+    );
+  }
 
-  useEffect(() => {
-    document.documentElement.lang = language;
-    let frame = window.requestAnimationFrame(() => translateDom(language));
-    const observer = new MutationObserver(() => {
-      window.cancelAnimationFrame(frame);
-      frame = window.requestAnimationFrame(() => translateDom(language));
-    });
+  return cloneElement(element, nextProps);
+}
 
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      characterData: true,
-      attributes: true,
-      attributeFilter: ["placeholder", "aria-label", "title"],
-    });
-
-    return () => {
-      observer.disconnect();
-      window.cancelAnimationFrame(frame);
-    };
-  }, [language]);
+export function LanguageProvider({
+  children,
+  language = defaultLocale,
+}: {
+  children: ReactNode;
+  language?: Language;
+}) {
 
   const value = useMemo<LanguageContextValue>(
     () => ({
       language,
-      setLanguage(nextLanguage) {
-        window.localStorage.setItem(STORAGE_KEY, nextLanguage);
-        setLanguageState(nextLanguage);
-      },
       languages,
       translate(valueToTranslate) {
         return translateValue(language, valueToTranslate);
@@ -1596,6 +1528,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       {children}
     </LanguageContext.Provider>
   );
+}
+
+export function LocalizedContent({ children }: { children: ReactNode }) {
+  const { language } = useLanguage();
+  return translateNode(language, children);
 }
 
 export function useLanguage() {

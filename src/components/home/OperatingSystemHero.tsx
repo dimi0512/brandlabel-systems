@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { useRef, useState } from "react";
 import { Container } from "@/components/Container";
+import { LocalizedContent } from "@/lib/i18n";
 
 const chapters = [
   {
@@ -61,7 +62,7 @@ const projectStatuses = [
 ] as const;
 
 export function ProjectWorkspace() {
-  return (
+  return <LocalizedContent>{(
     <div className="bl-real-app bl-real-project">
       <aside className="bl-real-sidebar">
         <div className="bl-real-project-brand"><span>PX</span><strong>PROJECT WORKSPACE</strong></div>
@@ -87,7 +88,7 @@ export function ProjectWorkspace() {
         </main>
       </section>
     </div>
-  );
+  )}</LocalizedContent>;
 }
 
 const salonDays = ["Δευ 20", "Τρι 21", "Τετ 22", "Πεμ 23", "Παρ 24", "Σαβ 25"] as const;
@@ -99,7 +100,7 @@ const salonAppointments = [
 ] as const;
 
 export function SalonWorkspace() {
-  return (
+  return <LocalizedContent>{(
     <div className="bl-real-app bl-real-salon">
       <aside className="bl-real-sidebar">
         <div className="bl-real-salon-brand"><span>KS</span><strong>Salon workspace</strong><small>Ιστορικό πελατών</small></div>
@@ -148,7 +149,7 @@ export function SalonWorkspace() {
         </main>
       </section>
     </div>
-  );
+  )}</LocalizedContent>;
 }
 
 function Toggle({ checked = true }: { checked?: boolean }) {
@@ -156,7 +157,7 @@ function Toggle({ checked = true }: { checked?: boolean }) {
 }
 
 function FieldWorkspace() {
-  return (
+  return <LocalizedContent>{(
     <div className="bl-real-app bl-real-field">
       <aside className="bl-real-sidebar">
         <div className="bl-real-field-brand"><strong>FLEET OPS</strong><small>Field activity</small></div>
@@ -197,7 +198,7 @@ function FieldWorkspace() {
         </main>
       </section>
     </div>
-  );
+  )}</LocalizedContent>;
 }
 
 const financeMetrics = [
@@ -208,7 +209,7 @@ const financeMetrics = [
 ] as const;
 
 function FinanceWorkspace() {
-  return (
+  return <LocalizedContent>{(
     <div className="bl-real-app bl-real-finance">
       <aside className="bl-real-sidebar">
         <div className="bl-real-finance-brand"><span>K</span><div><strong>Private Books</strong><small>Private workspace</small></div></div>
@@ -243,7 +244,7 @@ function FinanceWorkspace() {
         </main>
       </section>
     </div>
-  );
+  )}</LocalizedContent>;
 }
 
 const screens = [ProjectWorkspace, SalonWorkspace, FieldWorkspace, FinanceWorkspace] as const;
@@ -267,7 +268,7 @@ export function OperatingSystemHero() {
   const chapter = chapters[activeChapter];
   const ActiveScreen = screens[activeChapter];
 
-  return (
+  return <LocalizedContent>{(
     <section id="examples" ref={sectionRef} className="bl-os-hero bl-real-hero" aria-label="BrandLabel completed platform story">
       <div className="bl-os-sticky">
         <motion.div className="bl-os-backdrop-plane" style={{ y: backdropY }} aria-hidden="true" />
@@ -319,5 +320,5 @@ export function OperatingSystemHero() {
         </Container>
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

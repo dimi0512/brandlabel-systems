@@ -8,7 +8,7 @@ import {
   type DiagnosticAuditContext,
 } from "@/lib/diagnosticAudit";
 import { useEffect, useState } from "react";
-import { useLanguage, type Language } from "@/lib/i18n";
+import { LocalizedContent, useLanguage, type Language } from "@/lib/i18n";
 
 const frictionOptions = [
   "Delays or waiting",
@@ -158,7 +158,7 @@ export function FreeAuditExperience() {
   }
 
   if (status === "sent") {
-    return (
+    return <LocalizedContent>{(
       <section className="relative isolate overflow-hidden bg-[#eee8dd] py-20 sm:py-28">
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(200,169,106,.28),transparent_34%),radial-gradient(circle_at_10%_88%,rgba(55,91,125,.2),transparent_38%)]" />
         <Container className="relative z-10">
@@ -176,10 +176,10 @@ export function FreeAuditExperience() {
           </div>
         </Container>
       </section>
-    );
+    )}</LocalizedContent>;
   }
 
-  return (
+  return <LocalizedContent>{(
     <>
       <section className="relative isolate overflow-hidden bg-[#e9e6df] py-16 sm:py-24">
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_82%_14%,rgba(200,169,106,.34),transparent_32%),radial-gradient(circle_at_8%_88%,rgba(49,86,121,.24),transparent_38%),linear-gradient(135deg,#f1e7d5_0%,#e8e6e1_52%,#d8e3e8_100%)]" />
@@ -292,7 +292,7 @@ export function FreeAuditExperience() {
         </Container>
       </section>
     </>
-  );
+  )}</LocalizedContent>;
 }
 
 function AuditQuestion({ number, title, helper, children }: { number: string; title: string; helper: string; children: React.ReactNode }) {

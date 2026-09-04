@@ -1,14 +1,15 @@
 import { CaseStudiesShowcase } from "@/components/case-studies/CaseStudiesShowcase";
-import { CaseStudyLocaleSync } from "@/components/case-studies/CaseStudyLocaleSync";
 import { Container } from "@/components/Container";
 import { LocalizedLink } from "@/components/LocalizedLink";
 import { PageShell } from "@/components/PageShell";
 import type { Language } from "@/lib/i18n";
+import { createCaseStudyMetadata } from "@/lib/caseStudyMetadata";
+
+export const metadata = createCaseStudyMetadata("/case-studies");
 
 export function CaseStudiesPageContent({ language }: { language: Language }) {
   return (
-    <PageShell>
-      <CaseStudyLocaleSync language={language} />
+    <PageShell language={language}>
       <section className="bl-case-hero">
         <Container>
           <h1>Built around the way the business works.</h1>

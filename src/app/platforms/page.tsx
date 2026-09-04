@@ -5,6 +5,7 @@ import { OperatingSystemHero } from "@/components/home/OperatingSystemHero";
 import { PageShell } from "@/components/PageShell";
 import { PlatformsHero } from "@/components/platforms/PlatformsHero";
 import { createPageMetadata } from "@/lib/pageMetadata";
+import type { Language } from "@/lib/i18n";
 
 export const metadata: Metadata = createPageMetadata("/platforms");
 
@@ -27,9 +28,9 @@ const process = [
   },
 ] as const;
 
-export default function PlatformsPage() {
+export function PlatformsPageContent({ language = "en" }: { language?: Language }) {
   return (
-    <PageShell>
+    <PageShell language={language}>
       <PlatformsHero />
 
       <section className="bl-platform-process">
@@ -108,4 +109,8 @@ export default function PlatformsPage() {
       </section>
     </PageShell>
   );
+}
+
+export default function PlatformsPage() {
+  return <PlatformsPageContent />;
 }

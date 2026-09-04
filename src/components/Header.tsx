@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
-  getLanguageFromPathname,
+  LocalizedContent,
   localizedPathname,
   useLanguage,
 } from "@/lib/i18n";
@@ -23,7 +23,7 @@ const navItems = [
 ];
 
 function LanguageSelector({ compact = false }: { compact?: boolean }) {
-  const { language, languages, setLanguage, translate } = useLanguage();
+  const { language, languages, translate } = useLanguage();
   const pathname = usePathname();
 
   return (
@@ -38,7 +38,6 @@ function LanguageSelector({ compact = false }: { compact?: boolean }) {
         return (
           <Link
             key={item.code}
-            onClick={() => setLanguage(item.code)}
             href={localizedPathname(pathname, item.code)}
             aria-pressed={active}
             className={`inline-flex min-h-9 min-w-10 items-center justify-center rounded-sm px-2.5 text-center text-sm font-semibold leading-none transition ${
@@ -57,9 +56,8 @@ function LanguageSelector({ compact = false }: { compact?: boolean }) {
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname();
   const { language } = useLanguage();
-  const activeLanguage = getLanguageFromPathname(pathname) ?? language;
+  const activeLanguage = language;
 
   // Close on Escape. (No body scroll lock — on Mobile Safari that combo
   // with a sticky header causes a reflow that drops the next tap.)
@@ -74,7 +72,7 @@ export function Header() {
     };
   }, [menuOpen]);
 
-  return (
+  return <LocalizedContent>{(
     <header className="sticky top-0 z-[80] border-b border-[#0B1F3A]/10 bg-[#fffdf8] md:bg-[#fffdf8]/95 md:backdrop-blur-xl">
       <Container className="flex h-18 items-center justify-between md:grid md:h-22 md:grid-cols-[auto_minmax(0,1fr)_auto] md:gap-5 lg:gap-7">
         <div className="flex min-w-0 items-center gap-3">
@@ -205,5 +203,5 @@ export function Header() {
         </div>
       ) : null}
     </header>
-  );
+  )}</LocalizedContent>;
 }

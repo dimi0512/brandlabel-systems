@@ -1,4 +1,4 @@
-import HomePage from "@/app/page";
+import { HomePageContent } from "@/app/page";
 import { createPageMetadata } from "@/lib/pageMetadata";
 import { isLocale, type Locale } from "@/lib/seo";
 import { notFound } from "next/navigation";
@@ -25,5 +25,5 @@ export default async function LocalizedHomePage({
 }) {
   const { locale } = await params;
   if (!isLocale(locale) || locale === "en") notFound();
-  return <HomePage />;
+  return <HomePageContent language={locale} />;
 }

@@ -3,12 +3,13 @@ import { PageShell } from "@/components/PageShell";
 import { createPageMetadata } from "@/lib/pageMetadata";
 import type { Metadata } from "next";
 import { PrivacyContent } from "./PrivacyContent";
+import type { Language } from "@/lib/i18n";
 
 export const metadata: Metadata = createPageMetadata("/privacy");
 
-export default function PrivacyPage() {
+export function PrivacyPageContent({ language = "en" }: { language?: Language }) {
   return (
-    <PageShell>
+    <PageShell language={language}>
       <section className="hero-premium border-b border-[#0B1F3A]/10 py-20 sm:py-28">
         <Container>
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-[#C8A96A]">
@@ -30,4 +31,8 @@ export default function PrivacyPage() {
       <PrivacyContent />
     </PageShell>
   );
+}
+
+export default function PrivacyPage() {
+  return <PrivacyPageContent />;
 }

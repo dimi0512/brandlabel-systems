@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Container } from "@/components/Container";
+import { LocalizedContent } from "@/lib/i18n";
 
 export function PlatformsHero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -35,7 +36,7 @@ export function PlatformsHero() {
     };
   }, []);
 
-  return (
+  return <LocalizedContent>{(
     <section ref={heroRef} className="bl-platform-hero">
       <Container className="bl-platform-hero-inner">
         <div className="bl-platform-hero-copy">
@@ -58,5 +59,5 @@ export function PlatformsHero() {
         </div>
       </Container>
     </section>
-  );
+  )}</LocalizedContent>;
 }

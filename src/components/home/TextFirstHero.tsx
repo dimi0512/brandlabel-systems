@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Container } from "@/components/Container";
+import { LocalizedContent } from "@/lib/i18n";
 
 export function TextFirstHero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -35,7 +36,7 @@ export function TextFirstHero() {
     };
   }, []);
 
-  return (
+  return <LocalizedContent>{(
     <section
       ref={heroRef}
       id="hero"
@@ -65,5 +66,5 @@ export function TextFirstHero() {
         </div>
       </Container>
     </section>
-  );
+  )}</LocalizedContent>;
 }

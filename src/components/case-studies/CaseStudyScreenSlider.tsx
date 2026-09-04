@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import type { CaseStudyScreen } from "@/lib/caseStudies";
+import { LocalizedContent } from "@/lib/i18n";
 
 export function CaseStudyScreenSlider({ screens }: { screens: CaseStudyScreen[] }) {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -25,7 +26,7 @@ export function CaseStudyScreenSlider({ screens }: { screens: CaseStudyScreen[] 
     setCurrent(Math.round(track.scrollLeft / track.clientWidth));
   }
 
-  return (
+  return <LocalizedContent>{(
     <div className="bl-study-slider">
       <div className="bl-study-slider-toolbar">
         <div>
@@ -72,5 +73,5 @@ export function CaseStudyScreenSlider({ screens }: { screens: CaseStudyScreen[] 
         ))}
       </div>
     </div>
-  );
+  )}</LocalizedContent>;
 }

@@ -1,11 +1,18 @@
 import { CaseStudyDetail } from "@/components/case-studies/CaseStudyDetail";
-import { CaseStudyLocaleSync } from "@/components/case-studies/CaseStudyLocaleSync";
 import { PageShell } from "@/components/PageShell";
 import { caseStudySlugs, getCaseStudy } from "@/lib/caseStudies";
 import { notFound } from "next/navigation";
+import { createCaseStudyMetadata } from "@/lib/caseStudyMetadata";
 
 export function generateStaticParams() {
   return caseStudySlugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const caseStudy = getCaseStudy(slug);
+  if (!caseStudy) return {};
+  return createCaseStudyMetadata(`/case-studies/${caseStudy.slug}`);
 }
 
 export default async function CaseStudyPage({
@@ -18,8 +25,7 @@ export default async function CaseStudyPage({
   if (!caseStudy) notFound();
 
   return (
-    <PageShell>
-      <CaseStudyLocaleSync language="en" />
+    <PageShell language="en">
       <CaseStudyDetail caseStudy={caseStudy} />
     </PageShell>
   );

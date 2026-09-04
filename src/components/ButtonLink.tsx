@@ -2,9 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
-  getLanguageFromPathname,
+  LocalizedContent,
   localizedPathname,
   useLanguage,
 } from "@/lib/i18n";
@@ -27,10 +26,8 @@ export function ButtonLink({
   onClick,
 }: ButtonLinkProps) {
   const { language } = useLanguage();
-  const pathname = usePathname();
-  const activeLanguage = getLanguageFromPathname(pathname) ?? language;
   const localizedHref = href.startsWith("/")
-    ? localizedPathname(href, activeLanguage)
+    ? localizedPathname(href, language)
     : href;
 
   const variants = {
@@ -49,7 +46,7 @@ export function ButtonLink({
       transition={{ duration: 0.12 }}
       className={`inline-flex min-h-13 touch-manipulation items-center justify-center rounded-sm px-6 text-center text-base font-semibold leading-snug transition duration-200 hover:-translate-y-0.5 lg:text-lg ${variants[variant]} ${className}`}
     >
-      {children}
+      <LocalizedContent>{children}</LocalizedContent>
     </MotionLink>
   );
 }

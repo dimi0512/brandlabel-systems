@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
-  getLanguageFromPathname,
+  LocalizedContent,
   localizedPathname,
   useLanguage,
 } from "@/lib/i18n";
@@ -13,10 +12,9 @@ import { CookieSettingsButton } from "./CookieSettingsButton";
 
 export function Footer() {
   const { language } = useLanguage();
-  const pathname = usePathname();
-  const activeLanguage = getLanguageFromPathname(pathname) ?? language;
+  const activeLanguage = language;
 
-  return (
+  return <LocalizedContent>{(
     <footer className="dark-premium border-t border-white/10 text-white">
       <Container className="grid gap-10 py-12 md:grid-cols-[1.2fr_0.8fr_1fr] lg:gap-14 lg:py-14">
         <div>
@@ -75,5 +73,5 @@ export function Footer() {
         </Container>
       </div>
     </footer>
-  );
+  )}</LocalizedContent>;
 }

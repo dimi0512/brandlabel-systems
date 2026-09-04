@@ -1,4 +1,4 @@
-import PrivacyPage from "@/app/privacy/page";
+import { PrivacyPageContent } from "@/app/privacy/page";
 import { createPageMetadata } from "@/lib/pageMetadata";
 import { isLocale, type Locale } from "@/lib/seo";
 import { notFound } from "next/navigation";
@@ -25,5 +25,5 @@ export default async function LocalizedPrivacyPage({
 }) {
   const { locale } = await params;
   if (!isLocale(locale) || locale === "en") notFound();
-  return <PrivacyPage />;
+  return <PrivacyPageContent language={locale} />;
 }

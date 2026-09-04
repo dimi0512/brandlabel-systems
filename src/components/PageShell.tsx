@@ -1,12 +1,18 @@
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { LanguageProvider } from "@/lib/i18n";
+import { LanguageProvider, LocalizedContent, type Language } from "@/lib/i18n";
 
-export function PageShell({ children }: { children: React.ReactNode }) {
+export function PageShell({
+  children,
+  language = "en",
+}: {
+  children: React.ReactNode;
+  language?: Language;
+}) {
   return (
-    <LanguageProvider>
+    <LanguageProvider language={language}>
       <Header />
-      <main>{children}</main>
+      <LocalizedContent><main>{children}</main></LocalizedContent>
       <Footer />
     </LanguageProvider>
   );

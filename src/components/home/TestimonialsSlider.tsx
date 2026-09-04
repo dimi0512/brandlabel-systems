@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { Container } from "@/components/Container";
+import { LocalizedContent } from "@/lib/i18n";
 
 const testimonials = [
   {
@@ -57,7 +58,7 @@ export function TestimonialsSlider() {
     setCurrent(Math.round(track.scrollLeft / track.clientWidth));
   }
 
-  return (
+  return <LocalizedContent>{(
     <section className="bl-home-testimonials" aria-labelledby="testimonials-heading">
       <Container>
         <div className="bl-testimonials-heading">
@@ -112,5 +113,5 @@ export function TestimonialsSlider() {
         </div>
       </Container>
     </section>
-  );
+  )}</LocalizedContent>;
 }

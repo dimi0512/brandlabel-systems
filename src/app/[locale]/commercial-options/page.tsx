@@ -1,4 +1,4 @@
-import CommercialOptionsPage from "@/app/commercial-options/page";
+import { CommercialOptionsPageContent } from "@/app/commercial-options/page";
 import { createPageMetadata } from "@/lib/pageMetadata";
 import { isLocale } from "@/lib/seo";
 import { notFound } from "next/navigation";
@@ -16,5 +16,5 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function LocalizedCommercialOptionsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale) || locale === "en") notFound();
-  return <CommercialOptionsPage />;
+  return <CommercialOptionsPageContent language={locale} />;
 }

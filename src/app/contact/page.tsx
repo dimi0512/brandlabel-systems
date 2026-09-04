@@ -7,8 +7,9 @@ import { LocalizedLink } from "@/components/LocalizedLink";
 import { PageShell } from "@/components/PageShell";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import type { Language } from "@/lib/i18n";
 
-export default function ContactPage() {
+export function ContactPageContent({ language = "en" }: { language?: Language }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -55,7 +56,7 @@ export default function ContactPage() {
   }
 
   return (
-    <PageShell>
+    <PageShell language={language}>
       <section className="bl-contact-hero">
         <Container className="bl-contact-hero-layout">
           <div className="bl-contact-hero-copy">
@@ -223,4 +224,8 @@ export default function ContactPage() {
       <FAQSection />
     </PageShell>
   );
+}
+
+export default function ContactPage() {
+  return <ContactPageContent />;
 }

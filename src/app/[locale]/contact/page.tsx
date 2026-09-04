@@ -1,4 +1,4 @@
-import ContactPage from "@/app/contact/page";
+import { ContactPageContent } from "@/app/contact/page";
 import { createPageMetadata } from "@/lib/pageMetadata";
 import { isLocale, type Locale } from "@/lib/seo";
 import { notFound } from "next/navigation";
@@ -25,5 +25,5 @@ export default async function LocalizedContactPage({
 }) {
   const { locale } = await params;
   if (!isLocale(locale) || locale === "en") notFound();
-  return <ContactPage />;
+  return <ContactPageContent language={locale} />;
 }

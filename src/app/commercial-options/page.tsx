@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { Container } from "@/components/Container";
 import { PageShell } from "@/components/PageShell";
 import { createPageMetadata } from "@/lib/pageMetadata";
+import type { Language } from "@/lib/i18n";
 
 export const metadata: Metadata = createPageMetadata("/commercial-options");
 
@@ -37,9 +38,9 @@ const models = [
   },
 ] as const;
 
-export default function CommercialOptionsPage() {
+export function CommercialOptionsPageContent({ language = "en" }: { language?: Language }) {
   return (
-    <PageShell>
+    <PageShell language={language}>
       <section className="bl-detail-hero bl-commercial-hero">
         <Container>
           <h1>Choose how you want to invest in your platform.</h1>
@@ -130,4 +131,8 @@ export default function CommercialOptionsPage() {
       </section>
     </PageShell>
   );
+}
+
+export default function CommercialOptionsPage() {
+  return <CommercialOptionsPageContent />;
 }
