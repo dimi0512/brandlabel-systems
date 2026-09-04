@@ -1,4 +1,4 @@
-import CaseStudiesPage from "@/app/case-studies/page";
+import { CaseStudiesPageContent } from "@/app/case-studies/page";
 import { isLocale } from "@/lib/seo";
 import { notFound } from "next/navigation";
 
@@ -13,5 +13,5 @@ export default async function LocalizedCaseStudiesPage({
 }) {
   const { locale } = await params;
   if (!isLocale(locale) || locale === "en") notFound();
-  return <CaseStudiesPage />;
+  return <CaseStudiesPageContent language={locale} />;
 }
