@@ -41,6 +41,7 @@ export function Footer() {
           <div className="grid gap-2.5 text-[0.95rem] leading-6 text-neutral-300">
             <Link href={localizedPathname("/", activeLanguage)} className="touch-manipulation hover:text-white active:opacity-70">Home</Link>
             <Link href={localizedPathname("/platforms", activeLanguage)} className="touch-manipulation hover:text-white active:opacity-70">Platforms</Link>
+            <Link href={localizedPathname("/insights", activeLanguage)} className="touch-manipulation hover:text-white active:opacity-70">{activeLanguage === "fr" ? "Analyses" : activeLanguage === "nl" ? "Inzichten" : "Insights"}</Link>
             <Link href={localizedPathname("/commercial-options", activeLanguage)} className="touch-manipulation hover:text-white active:opacity-70">Pricing</Link>
             <Link href={localizedPathname("/diagnostic", activeLanguage)} className="touch-manipulation hover:text-white active:opacity-70">Cost calculator</Link>
             <Link href={localizedPathname("/free-operational-audit", activeLanguage)} className="touch-manipulation hover:text-white active:opacity-70">Free operational audit</Link>

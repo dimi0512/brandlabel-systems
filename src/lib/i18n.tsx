@@ -17,6 +17,7 @@ import {
   type Locale,
 } from "@/lib/seo";
 import { currentTranslations } from "@/lib/currentTranslations";
+import { getLocalizedInsightRoute } from "@/lib/insightRoutes";
 
 export type Language = Locale;
 
@@ -41,7 +42,8 @@ export function stripLanguageFromPathname(pathname: string) {
 
 export function localizedPathname(pathname: string, language: Language) {
   const route = stripLanguageFromPathname(pathname);
-  return localizedPath(route, language);
+  const localizedRoute = getLocalizedInsightRoute(route, language) ?? route;
+  return localizedPath(localizedRoute, language);
 }
 
 const extraTranslations: Record<Exclude<Language, "en">, Record<string, string>> = {
