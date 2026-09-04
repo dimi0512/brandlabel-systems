@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { Analytics } from "@/components/Analytics";
 import { absoluteUrl, SITE_NAME, siteUrl } from "@/lib/seo";
 import "./globals.css";
+import "@/components/insights/insights.css";
 
 export const viewport: Viewport = {
   width: "device-width",
