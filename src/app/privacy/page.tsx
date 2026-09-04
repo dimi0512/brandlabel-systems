@@ -23,7 +23,7 @@ export function PrivacyPageContent({ language = "en" }: { language?: Language })
             cookies, analytics, service providers, retention, security, and privacy rights.
           </p>
           <p className="mt-5 text-sm text-slate-500 lg:text-base">
-            Last updated: July 29, 2026
+            Last updated: September 2026
           </p>
         </Container>
       </section>

@@ -17,7 +17,7 @@ const lastModifiedByRoute: Record<PublicRoute, string> = {
   "/diagnostic": "2026-08-06",
   "/free-operational-audit": "2026-08-06",
   "/contact": "2026-08-06",
-  "/privacy": "2026-07-29",
+  "/privacy": "2026-09-04",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

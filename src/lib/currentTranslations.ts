@@ -391,7 +391,7 @@ export const currentTranslations: Record<CurrentLanguage, Record<string, string>
     "← Back": "← Retour",
     "Continue →": "Continuer →",
     "This policy explains how BrandLabel Agency handles personal information, cookies, analytics, service providers, retention, security, and privacy rights.": "Cette politique explique comment BrandLabel Agency traite les informations personnelles, les cookies, les statistiques, les prestataires, la conservation, la sécurité et les droits relatifs à la vie privée.",
-    "Last updated: July 29, 2026": "Dernière mise à jour : 29 juillet 2026",
+    "Last updated: September 2026": "Dernière mise à jour : septembre 2026",
   },
   nl: {
     ...caseStudyTranslations.nl,
@@ -781,6 +781,6 @@ export const currentTranslations: Record<CurrentLanguage, Record<string, string>
     "← Back": "← Terug",
     "Continue →": "Doorgaan →",
     "This policy explains how BrandLabel Agency handles personal information, cookies, analytics, service providers, retention, security, and privacy rights.": "Dit beleid legt uit hoe BrandLabel Agency omgaat met persoonsgegevens, cookies, analyses, dienstverleners, bewaartermijnen, beveiliging en privacyrechten.",
-    "Last updated: July 29, 2026": "Laatst bijgewerkt: 29 juli 2026",
+    "Last updated: September 2026": "Laatst bijgewerkt: september 2026",
   },
 };
