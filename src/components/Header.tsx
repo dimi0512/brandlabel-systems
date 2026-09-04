@@ -17,6 +17,7 @@ const MotionLink = motion.create(Link);
 
 const navItems = [
   { href: "/platforms", label: "Platforms" },
+  { href: "/case-studies", label: "Case Studies" },
   { href: "/commercial-options", label: "Pricing" },
   { href: "/contact", label: "Contact" },
 ];

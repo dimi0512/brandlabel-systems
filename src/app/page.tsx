@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Container } from "@/components/Container";
 import { PageShell } from "@/components/PageShell";
+import { CredibilityBand } from "@/components/home/CredibilityBand";
 import { TextFirstHero } from "@/components/home/TextFirstHero";
+import { TestimonialsSlider } from "@/components/home/TestimonialsSlider";
 import { createPageMetadata } from "@/lib/pageMetadata";
 
 export const metadata: Metadata = createPageMetadata("");
@@ -74,6 +76,7 @@ export default function Home() {
   return (
     <PageShell>
       <TextFirstHero />
+      <CredibilityBand />
 
       <section id="convenience" className="bl-convenience">
         <Container>
@@ -157,12 +160,14 @@ export default function Home() {
               Purchase the platform outright, acquire ownership gradually, access it through
               an ongoing service, or keep BrandLabel Agency actively involved as the business evolves.
             </p>
-            <ButtonLink href="/commercial-options" variant="dark">
+            <ButtonLink href="/commercial-options" variant="light">
               Compare all commercial options
             </ButtonLink>
           </div>
         </Container>
       </section>
+
+      <TestimonialsSlider />
 
       <section className="bl-home-contact">
         <Container className="bl-home-contact-inner">
