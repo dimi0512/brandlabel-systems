@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/seo";
+import { softwareCostArticle } from "@/lib/softwareCostArticle";
 import {
   customBusinessSoftwareSlugs,
   customBusinessSoftwareTranslationKey,
@@ -72,6 +73,15 @@ export type InsightArticle = {
 export const insightListingEntries: Record<Locale, InsightListingEntry[]> = {
   en: [
     {
+      slug: softwareCostArticle.slug,
+      category: "Software investment",
+      title: softwareCostArticle.title,
+      description: softwareCostArticle.introduction,
+      publishedAt: softwareCostArticle.publishedAt,
+      readingTime: softwareCostArticle.readingTime,
+      published: true,
+    },
+    {
       slug: customBusinessSoftwareSlugs.en,
       category: "Custom business software",
       title: "Custom business software in Belgium: when does your company actually need it?",
@@ -121,6 +131,7 @@ export const insightListingEntries: Record<Locale, InsightListingEntry[]> = {
 
 // Localized article records share one translation key for reciprocal routing and SEO.
 export const insightArticles: InsightArticle[] = [
+  softwareCostArticle,
   {
     locale: "en",
     slug: customBusinessSoftwareSlugs.en,

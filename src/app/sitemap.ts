@@ -46,7 +46,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const insightsPages = locales.map((locale) => ({
     url: localizedUrl("/insights", locale),
-    lastModified: "2026-09-04",
+    lastModified: insightArticles
+      .filter((article) => article.locale === locale)
+      .map((article) => article.updatedAt ?? article.publishedAt)
+      .sort()
+      .at(-1) ?? "2026-09-04",
     alternates: { languages: localizedAlternates("/insights") },
   }));
 
