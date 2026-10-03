@@ -1,8 +1,11 @@
 "use client";
 
 import { CONSENT_KEY, stopAnalytics } from "@/lib/analyticsConsent";
+import { useLanguage } from "@/lib/i18n";
 
 export function CookieSettingsButton() {
+  const { translate } = useLanguage();
+
   return (
     <button
       type="button"
@@ -13,7 +16,7 @@ export function CookieSettingsButton() {
       }}
       className="touch-manipulation text-left text-sm leading-6 text-neutral-400 transition hover:text-white active:opacity-70"
     >
-      Cookie settings
+      {translate("Cookie settings")}
     </button>
   );
 }
