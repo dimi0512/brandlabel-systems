@@ -10,9 +10,27 @@ import { defaultLocale } from "@/lib/seo";
 import { CONSENT_KEY, analyticsStopped, readAnalyticsConsent, resumeAnalytics, saveAnalyticsConsent, stopAnalytics } from "@/lib/analyticsConsent";
 
 const messages = {
-  en: { title: "Optional analytics", body: "BrandLabel Agency uses Google Analytics 4 (when enabled) and Vercel Analytics to measure website use and campaign performance. Accept to allow analytics, or decline to continue without it. Withdraw at any time through Cookie settings in the footer.", policy: "Privacy Policy", accept: "Accept analytics", decline: "Decline analytics" },
-  fr: { title: "Statistiques facultatives", body: "BrandLabel Agency utilise Google Analytics 4 (lorsqu’il est activé) et Vercel Analytics pour mesurer l’utilisation du site et les performances des campagnes. Acceptez les statistiques ou refusez pour continuer sans elles. Retirez votre consentement à tout moment via les Paramètres des cookies en bas de page.", policy: "Politique de confidentialité", accept: "Accepter les statistiques", decline: "Refuser les statistiques" },
-  nl: { title: "Optionele statistieken", body: "BrandLabel Agency gebruikt Google Analytics 4 (wanneer ingeschakeld) en Vercel Analytics om websitegebruik en campagneprestaties te meten. Accepteer statistieken of weiger om zonder verder te gaan. Trek je toestemming op elk moment in via Cookie-instellingen onderaan de pagina.", policy: "Privacybeleid", accept: "Statistieken accepteren", decline: "Statistieken weigeren" },
+  en: {
+    title: "Optional analytics",
+    body: "We use optional analytics to understand how the website is used and improve its performance. You can accept them or continue without them, and change your choice at any time in Cookie settings in the footer.",
+    policy: "Privacy Policy",
+    accept: "Accept analytics",
+    decline: "Decline analytics",
+  },
+  fr: {
+    title: "Statistiques facultatives",
+    body: "Nous utilisons des statistiques facultatives pour comprendre comment le site est utilisé et améliorer ses performances. Vous pouvez les accepter ou continuer sans elles, puis modifier votre choix à tout moment dans les Paramètres des cookies en bas de page.",
+    policy: "Politique de confidentialité",
+    accept: "Accepter les statistiques",
+    decline: "Refuser les statistiques",
+  },
+  nl: {
+    title: "Optionele statistieken",
+    body: "We gebruiken optionele statistieken om te begrijpen hoe de website wordt gebruikt en de prestaties ervan te verbeteren. U kunt ze accepteren of zonder statistieken doorgaan en uw keuze op elk moment wijzigen via Cookie-instellingen onderaan de pagina.",
+    policy: "Privacybeleid",
+    accept: "Statistieken accepteren",
+    decline: "Statistieken weigeren",
+  },
 };
 
 export function Analytics() {
