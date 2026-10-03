@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 export function generateStaticParams() {
-  return [{ locale: "fr" }, { locale: "nl" }];
+  return [{ locale: "en" }, { locale: "nl" }];
 }
 
 export async function generateMetadata({
@@ -14,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  if (!isLocale(locale) || locale === "en") notFound();
+  if (!isLocale(locale) || locale === "fr") notFound();
   return createPageMetadata("/contact", locale as Locale);
 }
 
@@ -24,6 +24,6 @@ export default async function LocalizedContactPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!isLocale(locale) || locale === "en") notFound();
+  if (!isLocale(locale) || locale === "fr") notFound();
   return <ContactPageContent language={locale} />;
 }

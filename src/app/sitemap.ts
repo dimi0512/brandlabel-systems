@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import {
+  defaultLocale,
   locales,
   localizedAlternates,
   localizedUrl,
@@ -57,13 +58,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         localizedUrl(`/insights/${equivalent.slug}`, equivalent.locale),
       ]),
     );
-    const englishEquivalent = equivalents.find(
-      (equivalent) => equivalent.locale === "en",
+    const defaultEquivalent = equivalents.find(
+      (equivalent) => equivalent.locale === defaultLocale,
     );
-    if (englishEquivalent) {
+    if (defaultEquivalent) {
       languages["x-default"] = localizedUrl(
-        `/insights/${englishEquivalent.slug}`,
-        "en",
+        `/insights/${defaultEquivalent.slug}`,
+        defaultLocale,
       );
     }
 

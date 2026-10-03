@@ -7,6 +7,7 @@ import { TextFirstHero } from "@/components/home/TextFirstHero";
 import { TestimonialsSlider } from "@/components/home/TestimonialsSlider";
 import { createPageMetadata } from "@/lib/pageMetadata";
 import type { Language } from "@/lib/i18n";
+import { defaultLocale } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata("");
 
@@ -73,7 +74,7 @@ function ConvenienceIcon({ name }: { name: (typeof conveniences)[number]["icon"]
   return <svg {...common}><circle cx="14" cy="14" r="10" /><path d="M14 8.5V14l3.8 2.4" /></svg>;
 }
 
-export function HomePageContent({ language = "en" }: { language?: Language }) {
+export function HomePageContent({ language = defaultLocale }: { language?: Language }) {
   return (
     <PageShell language={language}>
       <TextFirstHero />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  defaultLocale,
   localizedAlternates,
   localizedUrl,
   SITE_NAME,
@@ -236,7 +237,7 @@ const localizedPageSeo: Partial<Record<Locale, Partial<Record<PublicRoute, Parti
 
 export function createPageMetadata(
   route: PublicRoute,
-  locale: Locale = "en",
+  locale: Locale = defaultLocale,
 ): Metadata {
   const seo = { ...pageSeo[route], ...localizedPageSeo[locale]?.[route] };
   const url = localizedUrl(route, locale);

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { CaseStudySlug } from "@/lib/caseStudies";
 import {
+  defaultLocale,
   localizedAlternates,
   localizedUrl,
   SITE_NAME,
@@ -70,7 +71,7 @@ const caseStudySeo: Record<Locale, Record<CaseStudyRoute, CaseStudySeo>> = {
 
 export function createCaseStudyMetadata(
   route: CaseStudyRoute,
-  locale: Locale = "en",
+  locale: Locale = defaultLocale,
 ): Metadata {
   const seo = caseStudySeo[locale][route];
   const url = localizedUrl(route, locale);

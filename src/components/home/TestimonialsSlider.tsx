@@ -7,31 +7,31 @@ import { LocalizedContent } from "@/lib/i18n";
 const testimonials = [
   {
     title: "Understanding the operation",
-    quote: "BrandLabel understood how we actually work before proposing anything. The system feels like it was designed from inside our business, not adapted from something generic.",
+    quote: "They took the time to understand how we work before building anything. What we got really feels made for us.",
     name: "Sophie Lambert",
     role: "Managing Director",
   },
   {
     title: "Everything connected",
-    quote: "We were working across spreadsheets, emails and separate tools. Now the information and workflows we use every day are connected in one place.",
+    quote: "Before, we were jumping between Excel, emails and a few different tools. Now everyone knows where to find the right information.",
     name: "Thomas De Smet",
     role: "Operations Director",
   },
   {
     title: "Time saved",
-    quote: "Tasks that used to take us hours every week now take minutes. We spend far less time on administration and have a much clearer view of the operation.",
+    quote: "The admin used to take a few hours every week. Now it’s mostly a quick check, and we can see what’s happening straight away.",
     name: "Charlotte Peeters",
     role: "Head of Operations",
   },
   {
     title: "Working with BrandLabel",
-    quote: "We explained how the business worked and where we were struggling. BrandLabel translated that into a system that made sense from the first version.",
+    quote: "We showed them what was slowing us down. The first version already felt familiar and was easy for the team to understand.",
     name: "Nicolas Laurent",
     role: "Founder & CEO",
   },
   {
     title: "Software that adapts to the business",
-    quote: "For once, we didn’t have to change the way we work to fit the software. The software was built around the way our team actually operates.",
+    quote: "The biggest difference is that the system follows the way we work. We didn’t have to reorganise the whole team around the software.",
     name: "Julie Van den Berg",
     role: "General Manager",
   },

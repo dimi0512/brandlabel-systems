@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { createCaseStudyMetadata } from "@/lib/caseStudyMetadata";
 
 export function generateStaticParams() {
-  return ["fr", "nl"].flatMap((locale) =>
+  return ["en", "nl"].flatMap((locale) =>
     caseStudySlugs.map((slug) => ({ locale, slug })),
   );
 }
@@ -14,7 +14,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
   const caseStudy = getCaseStudy(slug);
-  if (!isLocale(locale) || locale === "en" || !caseStudy) return {};
+  if (!isLocale(locale) || locale === "fr" || !caseStudy) return {};
   return createCaseStudyMetadata(`/case-studies/${caseStudy.slug}`, locale);
 }
 
@@ -25,7 +25,7 @@ export default async function LocalizedCaseStudyPage({
 }) {
   const { locale, slug } = await params;
   const caseStudy = getCaseStudy(slug);
-  if (!isLocale(locale) || locale === "en" || !caseStudy) notFound();
+  if (!isLocale(locale) || locale === "fr" || !caseStudy) notFound();
 
   return (
     <PageShell language={locale}>

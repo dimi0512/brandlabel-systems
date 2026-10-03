@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { InsightArticle } from "@/lib/insights";
 import { getInsightArticleAlternates } from "@/lib/insights";
 import {
+  defaultLocale,
   localizedAlternates,
   localizedUrl,
   SITE_NAME,
@@ -43,7 +44,7 @@ function socialMetadata(title: string, description: string, url: string, locale:
   };
 }
 
-export function createInsightsListingMetadata(locale: Locale = "en"): Metadata {
+export function createInsightsListingMetadata(locale: Locale = defaultLocale): Metadata {
   const seo = listingSeo[locale];
   const url = localizedUrl("/insights", locale);
 
@@ -68,11 +69,13 @@ export function createInsightArticleMetadata(article: InsightArticle): Metadata 
       localizedUrl(`/insights/${equivalent.slug}`, equivalent.locale),
     ]),
   );
-  const englishEquivalent = equivalents.find((equivalent) => equivalent.locale === "en");
-  if (englishEquivalent) {
+  const defaultEquivalent = equivalents.find(
+    (equivalent) => equivalent.locale === defaultLocale,
+  );
+  if (defaultEquivalent) {
     languages["x-default"] = localizedUrl(
-      `/insights/${englishEquivalent.slug}`,
-      "en",
+      `/insights/${defaultEquivalent.slug}`,
+      defaultLocale,
     );
   }
 

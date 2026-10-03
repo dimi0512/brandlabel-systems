@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { headers } from "next/headers";
 import { Analytics } from "@/components/Analytics";
-import { absoluteUrl, SITE_NAME, siteUrl } from "@/lib/seo";
+import { absoluteUrl, defaultLocale, SITE_NAME, siteUrl } from "@/lib/seo";
 import "./globals.css";
 import "@/components/insights/insights.css";
 
@@ -34,11 +34,11 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   metadataBase: siteUrl,
   title: {
-    default: `${SITE_NAME} | Operational Platforms for SMEs`,
+    default: `${SITE_NAME} | Plateformes opérationnelles pour PME`,
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "BrandLabel designs operational platforms around the way your company works, connecting clients, planning, teams, documents, stock, sales and repetitive processes.",
+    "BrandLabel conçoit des plateformes opérationnelles autour du fonctionnement de votre entreprise, en reliant clients, planning, équipes, documents, stock, ventes et processus répétitifs.",
   keywords: [
     "operational platform agency",
     "custom internal systems",
@@ -79,10 +79,10 @@ export const metadata: Metadata = {
     type: "website",
     url: absoluteUrl("/"),
     siteName: SITE_NAME,
-    locale: "en_GB",
-    title: `${SITE_NAME} | Tailored Operational Platforms for SMEs`,
+    locale: "fr_FR",
+    title: `${SITE_NAME} | Plateformes opérationnelles sur mesure pour PME`,
     description:
-      "Tailored operational platforms, workflow automation and customer interfaces for SMEs across industries, worldwide.",
+      "Plateformes opérationnelles sur mesure, automatisation des flux et interfaces client pour les PME de tous secteurs.",
     images: [
       {
         url: "/og-image.png",
@@ -94,9 +94,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Tailored Operational Platforms for SMEs`,
+    title: `${SITE_NAME} | Plateformes opérationnelles sur mesure pour PME`,
     description:
-      "Tailored operational platforms, workflow automation and customer interfaces for SMEs across industries, worldwide.",
+      "Plateformes opérationnelles sur mesure, automatisation des flux et interfaces client pour les PME de tous secteurs.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -201,7 +201,8 @@ export default async function RootLayout({
 }>) {
   const requestHeaders = await headers();
   const routeLocale = requestHeaders.get("x-brandlabel-locale");
-  const language = routeLocale === "fr" || routeLocale === "nl" ? routeLocale : "en";
+  const language =
+    routeLocale === "en" || routeLocale === "nl" ? routeLocale : defaultLocale;
 
   return (
     <html lang={language}>

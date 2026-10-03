@@ -4,10 +4,11 @@ import { createPageMetadata } from "@/lib/pageMetadata";
 import type { Metadata } from "next";
 import { PrivacyContent } from "./PrivacyContent";
 import type { Language } from "@/lib/i18n";
+import { defaultLocale } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata("/privacy");
 
-export function PrivacyPageContent({ language = "en" }: { language?: Language }) {
+export function PrivacyPageContent({ language = defaultLocale }: { language?: Language }) {
   return (
     <PageShell language={language}>
       <section className="hero-premium border-b border-[#0B1F3A]/10 py-20 sm:py-28">

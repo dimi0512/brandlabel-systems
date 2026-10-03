@@ -73,8 +73,8 @@ export function Header() {
   }, [menuOpen]);
 
   return <LocalizedContent>{(
-    <header className="sticky top-0 z-[80] border-b border-[#0B1F3A]/10 bg-[#fffdf8] md:bg-[#fffdf8]/95 md:backdrop-blur-xl">
-      <Container className="flex h-18 items-center justify-between md:grid md:h-22 md:grid-cols-[auto_minmax(0,1fr)_auto] md:gap-5 lg:gap-7">
+    <header className="sticky top-0 z-[80] border-b border-[#0B1F3A]/10 bg-[#fffdf8] xl:bg-[#fffdf8]/95 xl:backdrop-blur-xl">
+      <Container className="flex h-18 items-center justify-between xl:grid xl:h-22 xl:grid-cols-[auto_minmax(0,1fr)_auto] xl:gap-5 2xl:gap-7">
         <div className="flex min-w-0 items-center gap-3">
           {/* Mobile hamburger */}
           <button
@@ -83,7 +83,7 @@ export function Header() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className="pointer-events-auto relative z-[9999] grid size-10 touch-manipulation place-items-center rounded-sm border border-[#0B1F3A]/15 bg-white text-[#0B1F3A] shadow-[0_8px_22px_rgba(11,31,58,0.08)] active:scale-95 active:opacity-80 md:hidden"
+            className="pointer-events-auto relative z-[9999] grid size-10 touch-manipulation place-items-center rounded-sm border border-[#0B1F3A]/15 bg-white text-[#0B1F3A] shadow-[0_8px_22px_rgba(11,31,58,0.08)] active:scale-95 active:opacity-80 xl:hidden"
           >
             {menuOpen ? (
               <svg viewBox="0 0 18 18" width="16" height="16" aria-hidden>
@@ -117,36 +117,36 @@ export function Header() {
               width={520}
               height={160}
               priority
-              className="h-10 w-auto max-w-[8.75rem] shrink-0 object-contain sm:h-12 sm:max-w-[10rem] lg:h-13 lg:max-w-[12rem] xl:h-14 xl:max-w-[14rem]"
+              className="h-10 w-auto max-w-[8.75rem] shrink-0 object-contain sm:h-12 sm:max-w-[10rem] xl:h-13 xl:max-w-[12rem] 2xl:h-14 2xl:max-w-[14rem]"
             />
           </Link>
         </div>
 
         {/* Desktop nav */}
         <nav
-          className="hidden items-center justify-center gap-1 md:flex lg:gap-3 xl:gap-5"
+          className="hidden items-center justify-center gap-3 xl:flex 2xl:gap-5"
           aria-label="Main navigation"
         >
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={localizedPathname(item.href, activeLanguage)}
-              className="bl-header-gold-hover rounded-sm px-2.5 py-2 text-sm text-slate-600 hover:text-[#0B1F3A] lg:px-3 lg:text-base xl:text-lg"
+              className="bl-header-gold-hover whitespace-nowrap rounded-sm px-3 py-2 text-base text-slate-600 hover:text-[#0B1F3A] 2xl:text-lg"
             >
               <span>{item.label}</span>
             </Link>
           ))}
         </nav>
 
-        <div className="flex shrink-0 items-center justify-self-end gap-2 lg:gap-3">
-          <div className="hidden md:block">
+        <div className="flex shrink-0 items-center justify-self-end gap-2 xl:gap-3">
+          <div className="hidden xl:block">
             <LanguageSelector />
           </div>
-          <div className="md:hidden">
+          <div className="xl:hidden">
             <LanguageSelector compact />
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden xl:block">
             <ButtonLink
               href={localizedPathname("/diagnostic", activeLanguage)}
               variant="dark"
@@ -171,7 +171,7 @@ export function Header() {
             if (e.target === e.currentTarget) setMenuOpen(false);
           }}
           // min-h-screen is a fallback for browsers without svh support (older Samsung Internet)
-          className="pointer-events-auto min-h-screen min-h-[calc(100svh-5rem)] border-t border-[#0B1F3A]/10 bg-[#fffdf8] md:hidden"
+          className="pointer-events-auto min-h-screen min-h-[calc(100svh-5rem)] border-t border-[#0B1F3A]/10 bg-[#fffdf8] xl:hidden"
         >
           <nav
             aria-label="Mobile navigation"

@@ -8,8 +8,9 @@ import { PageShell } from "@/components/PageShell";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import type { Language } from "@/lib/i18n";
+import { defaultLocale } from "@/lib/seo";
 
-export function ContactPageContent({ language = "en" }: { language?: Language }) {
+export function ContactPageContent({ language = defaultLocale }: { language?: Language }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
 

@@ -3,6 +3,7 @@ import { PageShell } from "@/components/PageShell";
 import { caseStudySlugs, getCaseStudy } from "@/lib/caseStudies";
 import { notFound } from "next/navigation";
 import { createCaseStudyMetadata } from "@/lib/caseStudyMetadata";
+import { defaultLocale } from "@/lib/seo";
 
 export function generateStaticParams() {
   return caseStudySlugs.map((slug) => ({ slug }));
@@ -25,7 +26,7 @@ export default async function CaseStudyPage({
   if (!caseStudy) notFound();
 
   return (
-    <PageShell language="en">
+    <PageShell language={defaultLocale}>
       <CaseStudyDetail caseStudy={caseStudy} />
     </PageShell>
   );

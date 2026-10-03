@@ -6,6 +6,7 @@ import { PageShell } from "@/components/PageShell";
 import { PlatformsHero } from "@/components/platforms/PlatformsHero";
 import { createPageMetadata } from "@/lib/pageMetadata";
 import type { Language } from "@/lib/i18n";
+import { defaultLocale } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata("/platforms");
 
@@ -28,7 +29,7 @@ const process = [
   },
 ] as const;
 
-export function PlatformsPageContent({ language = "en" }: { language?: Language }) {
+export function PlatformsPageContent({ language = defaultLocale }: { language?: Language }) {
   return (
     <PageShell language={language}>
       <PlatformsHero />

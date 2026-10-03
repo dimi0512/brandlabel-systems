@@ -6,7 +6,7 @@ export const siteUrl = new URL(SITE_URL);
 export const locales = ["en", "fr", "nl"] as const;
 export type Locale = (typeof locales)[number];
 
-export const defaultLocale: Locale = "en";
+export const defaultLocale: Locale = "fr";
 
 export const publicRoutes = [
   "",
@@ -38,7 +38,7 @@ export function localizedAlternates(route: PublicRoute | string) {
     en: localizedUrl(route, "en"),
     fr: localizedUrl(route, "fr"),
     nl: localizedUrl(route, "nl"),
-    "x-default": localizedUrl(route, "en"),
+    "x-default": localizedUrl(route, defaultLocale),
   };
 }
 

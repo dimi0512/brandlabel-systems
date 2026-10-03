@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
   const firstSegment = request.nextUrl.pathname.split("/").filter(Boolean)[0];
-  const locale = firstSegment === "fr" || firstSegment === "nl" ? firstSegment : "en";
+  const locale = firstSegment === "en" || firstSegment === "nl" ? firstSegment : "fr";
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-brandlabel-locale", locale);
 

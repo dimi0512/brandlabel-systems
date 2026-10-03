@@ -4,6 +4,7 @@ import { LocalizedLink } from "@/components/LocalizedLink";
 import { PageShell } from "@/components/PageShell";
 import type { Language } from "@/lib/i18n";
 import { createCaseStudyMetadata } from "@/lib/caseStudyMetadata";
+import { defaultLocale } from "@/lib/seo";
 
 export const metadata = createCaseStudyMetadata("/case-studies");
 
@@ -30,5 +31,5 @@ export function CaseStudiesPageContent({ language }: { language: Language }) {
 }
 
 export default function CaseStudiesPage() {
-  return <CaseStudiesPageContent language="en" />;
+  return <CaseStudiesPageContent language={defaultLocale} />;
 }

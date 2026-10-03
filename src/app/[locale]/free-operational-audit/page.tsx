@@ -6,12 +6,12 @@ import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  if (!isLocale(locale) || locale === "en") return {};
+  if (!isLocale(locale) || locale === "fr") return {};
   return createPageMetadata("/free-operational-audit", locale as Locale);
 }
 
 export default async function LocalizedFreeOperationalAuditPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  if (!isLocale(locale) || locale === "en") notFound();
+  if (!isLocale(locale) || locale === "fr") notFound();
   return <FreeOperationalAuditPageContent language={locale} />;
 }

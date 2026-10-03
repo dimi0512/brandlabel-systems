@@ -4,6 +4,7 @@ import { Container } from "@/components/Container";
 import { PageShell } from "@/components/PageShell";
 import { createPageMetadata } from "@/lib/pageMetadata";
 import type { Language } from "@/lib/i18n";
+import { defaultLocale } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata("/commercial-options");
 
@@ -38,7 +39,7 @@ const models = [
   },
 ] as const;
 
-export function CommercialOptionsPageContent({ language = "en" }: { language?: Language }) {
+export function CommercialOptionsPageContent({ language = defaultLocale }: { language?: Language }) {
   return (
     <PageShell language={language}>
       <section className="bl-detail-hero bl-commercial-hero">

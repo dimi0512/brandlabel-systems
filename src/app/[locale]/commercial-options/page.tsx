@@ -4,17 +4,17 @@ import { isLocale } from "@/lib/seo";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
-  return [{ locale: "fr" }, { locale: "nl" }];
+  return [{ locale: "en" }, { locale: "nl" }];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  if (!isLocale(locale) || locale === "en") return {};
+  if (!isLocale(locale) || locale === "fr") return {};
   return createPageMetadata("/commercial-options", locale);
 }
 
 export default async function LocalizedCommercialOptionsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  if (!isLocale(locale) || locale === "en") notFound();
+  if (!isLocale(locale) || locale === "fr") notFound();
   return <CommercialOptionsPageContent language={locale} />;
 }

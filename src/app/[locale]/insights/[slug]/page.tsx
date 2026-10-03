@@ -6,20 +6,20 @@ import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   return insightArticles
-    .filter((article) => article.locale !== "en")
+    .filter((article) => article.locale !== "fr")
     .map((article) => ({ locale: article.locale, slug: article.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
-  if (!isLocale(locale) || locale === "en") return {};
+  if (!isLocale(locale) || locale === "fr") return {};
   const article = getInsightArticle(locale, slug);
   return article ? createInsightArticleMetadata(article) : {};
 }
 
 export default async function LocalizedInsightArticlePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
-  if (!isLocale(locale) || locale === "en") notFound();
+  if (!isLocale(locale) || locale === "fr") notFound();
   const article = getInsightArticle(locale, slug);
   if (!article) notFound();
   return <InsightArticle article={article} />;
