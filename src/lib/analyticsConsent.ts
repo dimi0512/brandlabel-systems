@@ -1,5 +1,5 @@
 export const CONSENT_KEY = "brandlabel_cookie_consent";
-export const CONSENT_VERSION = "2026-09-30";
+export const CONSENT_VERSION = "2026-10-03";
 export const CONSENT_MAX_AGE = 180 * 24 * 60 * 60 * 1000;
 export type AnalyticsConsent = "accepted" | "declined";
 

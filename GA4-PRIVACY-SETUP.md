@@ -6,6 +6,15 @@ Law checked as of: 30 September 2026. Draft for review, not a published policy.
 
 ### Setup update — 3 October 2026
 
+Legal-notice implementation update (same date; law checked as of 3 October 2026):
+
+- The owner confirmed sole-trader status and the controller name Kizidou Dimitra. At the owner's express request, the address remains Rue de la Marjolaine, 1120 Bruxelles, Belgium, without a building number. Do not request the number again or invent it; the incomplete address remains a disclosed compliance limitation, not a finding of compliance.
+- Replaced the generic privacy page with 11 numbered sections in English, French and Dutch. The controller name appears once per language, only in the identification section. Removed fictitious account/newsletter/affiliate scenarios, corrected diagnostic session-storage and email handling, and added the configured consent/analytics settings, named providers, retention qualifications and rights/complaint information.
+- Updated the visible notice date and consent version to 2026-10-03. Previously stored consent must be requested again after release. No production deployment has been authorised or performed as part of this edit.
+- Content checks passed in all three languages (section order, identity once, address and analytics disclosures), and a consent-helper check confirmed that the earlier notice version no longer grants consent. Full lint/build/browser checks remain separate release checks.
+- Provider-contract details, actual Google cookie scope/expiry, mailbox forwarding or additional business tools, and implementation of the stated retention practice still require verification. This edit does not certify overall GDPR compliance or an exhaustive business-wide data inventory.
+- Official sources checked: https://www.autoriteprotectiondonnees.be/professionnel/themes/internet/cookies ; https://www.autoriteprotectiondonnees.be/professionnel/rgpd-/droits-des-citoyens/droit-a-l-information ; https://support.google.com/analytics/answer/7667196?hl=en ; https://vercel.com/docs/analytics/privacy-policy ; https://policies.google.com/privacy/frameworks?hl=en .
+
 - User supplied Measurement ID `G-NL0WL6TWL0`; verified in the BrandLabel Agency property `557180153`, web stream `15992820391`, named BrandLabel Website, for `https://brandlabelagency.com`.
 - Added the ID to gitignored `.env.local` for local verification only. No Vercel production environment change or deployment was made.
 - Saved enhanced measurement with page views only, including browser-history page changes; scrolls, outbound clicks, site search, form interactions, video engagement and downloads are off.

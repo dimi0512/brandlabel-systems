@@ -24,7 +24,7 @@ export function PrivacyPageContent({ language = defaultLocale }: { language?: La
             cookies, analytics, service providers, retention, security, and privacy rights.
           </p>
           <p className="mt-5 text-sm text-slate-500 lg:text-base">
-            Last updated: September 2026
+            {language === "fr" ? "Dernière mise à jour : 3 octobre 2026" : language === "nl" ? "Laatst bijgewerkt: 3 oktober 2026" : "Last updated: 3 October 2026"}
           </p>
         </Container>
       </section>
